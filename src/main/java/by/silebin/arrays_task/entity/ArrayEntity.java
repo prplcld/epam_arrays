@@ -1,6 +1,7 @@
 package by.silebin.arrays_task.entity;
 
 import java.util.Arrays;
+import java.util.stream.IntStream;
 
 public class ArrayEntity {
 
@@ -36,5 +37,16 @@ public class ArrayEntity {
         return sb.toString();
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ArrayEntity that = (ArrayEntity) o;
+        return Arrays.equals(arr, that.arr);
+    }
 
+    @Override
+    public int hashCode() {
+        return IntStream.of(arr).sum();
+    }
 }
