@@ -2,6 +2,7 @@ package by.silebin;
 
 import by.silebin.arrays_task.entity.ArrayEntity;
 import by.silebin.arrays_task.service.SearchService;
+import by.silebin.arrays_task.service.exception.NoElementsInArrayException;
 
 
 public class App 
@@ -10,6 +11,10 @@ public class App
     {
         ArrayEntity arrayEntity = new ArrayEntity(new int[]{});
         SearchService searchService = new SearchService();
-        System.out.println(searchService.searchMaxValue(arrayEntity));
+        try {
+            System.out.println(searchService.searchMaxValue(arrayEntity));
+        } catch (NoElementsInArrayException e) {
+            e.printStackTrace();
+        }
     }
 }
