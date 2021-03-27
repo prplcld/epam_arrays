@@ -1,5 +1,7 @@
 package by.silebin.arrays_task.service;
 
-public interface ReplaceService {
+import by.silebin.arrays_task.entity.ArrayEntity;
 
+public interface ReplaceService {
+    ArrayEntity replaceAllNegativeElementsWithZero(ArrayEntity array);
 }
