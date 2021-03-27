@@ -1,19 +1,26 @@
 package by.silebin;
 
-import by.silebin.arrays_task.entity.ArrayEntity;
-import by.silebin.arrays_task.service.impl.SearchServiceImpl;
-import by.silebin.arrays_task.service.exception.NoElementsInArrayException;
+import by.silebin.arrays_task.creator.ArrayCreator;
+import by.silebin.arrays_task.creator.impl.ArrayCreatorImpl;
+import by.silebin.arrays_task.reader.TextFileReader;
+import by.silebin.arrays_task.reader.impl.TextFileReaderImpl;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
+public class App {
 
-public class App 
-{
-    public static void main( String[] args )
-    {
-        ArrayEntity arrayEntity = new ArrayEntity(new int[]{});
-        SearchServiceImpl searchService = new SearchServiceImpl();
+    public static final Logger LOGGER = LogManager.getLogger(App.class.getName());
+
+    public static void main( String[] args ) {
+        TextFileReader fileReader = new TextFileReaderImpl();
+        ArrayCreator arrayCreator = new ArrayCreatorImpl();
         try {
-            System.out.println(searchService.searchMaxValue(arrayEntity));
-        } catch (NoElementsInArrayException e) {
+            String str = fileReader.readFile("data.txt");
+            int[] arr = arrayCreator.createFromString(str).getArray();
+            for(int i : arr){
+                LOGGER.info(i);
+            }
+        } catch (NoSuchFieldException e) {
             e.printStackTrace();
         }
     }
