@@ -1,6 +1,6 @@
-package by.silebin.arrays_task.validation.impl;
+package by.silebin.arrays_task.validator.impl;
 
-import by.silebin.arrays_task.validation.ArrayAsStringValidator;
+import by.silebin.arrays_task.validator.ArrayAsStringValidator;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

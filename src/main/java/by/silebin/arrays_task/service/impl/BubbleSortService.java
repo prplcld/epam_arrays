@@ -2,13 +2,18 @@ package by.silebin.arrays_task.service.impl;
 
 import by.silebin.arrays_task.entity.ArrayEntity;
 import by.silebin.arrays_task.service.SortService;
+import by.silebin.arrays_task.service.exception.EmptyArrayException;
 
 public class BubbleSortService implements SortService {
     @Override
-    public ArrayEntity sort(ArrayEntity array) {
-        int[] sortedArray = bubbleSort(array.getArray());
-        array.setArray(sortedArray);
-        return array;
+    public ArrayEntity sort(ArrayEntity array) throws EmptyArrayException {
+        int[] unsortedArray = array.getArray();
+        if(unsortedArray.length != 0) {
+            int[] sortedArray = bubbleSort(unsortedArray);
+            array.setArray(sortedArray);
+            return array;
+        }
+        else throw new EmptyArrayException();
     }
 
     private int[] bubbleSort(int[] arr){

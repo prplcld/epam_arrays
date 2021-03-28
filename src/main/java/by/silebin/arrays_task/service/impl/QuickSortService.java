@@ -2,15 +2,19 @@ package by.silebin.arrays_task.service.impl;
 
 import by.silebin.arrays_task.entity.ArrayEntity;
 import by.silebin.arrays_task.service.SortService;
+import by.silebin.arrays_task.service.exception.EmptyArrayException;
 
 public class QuickSortService implements SortService {
 
     @Override
-    public ArrayEntity sort(ArrayEntity array) {
+    public ArrayEntity sort(ArrayEntity array) throws EmptyArrayException {
         int[] unsortedArray = array.getArray();
-        int[] sortedArray = quickSort(unsortedArray, 0, unsortedArray.length - 1);
-        array.setArray(sortedArray);
-        return array;
+        if(unsortedArray.length != 0) {
+            int[] sortedArray = quickSort(unsortedArray, 0, unsortedArray.length - 1);
+            array.setArray(sortedArray);
+            return array;
+        }
+        else throw new EmptyArrayException();
     }
 
     private int[] quickSort(int[] arr, int low, int high) {

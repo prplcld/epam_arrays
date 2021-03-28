@@ -1,8 +1,9 @@
 package by.silebin.arrays_task.reader.impl;
 
 import by.silebin.arrays_task.reader.TextFileReader;
-import by.silebin.arrays_task.validation.ArrayAsStringValidator;
-import by.silebin.arrays_task.validation.impl.ArrayAsStringValidatorImpl;
+import by.silebin.arrays_task.reader.exception.NoValidDataException;
+import by.silebin.arrays_task.validator.ArrayAsStringValidator;
+import by.silebin.arrays_task.validator.impl.ArrayAsStringValidatorImpl;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -12,13 +13,14 @@ import java.io.InputStreamReader;
 
 public class TextFileReaderImpl implements TextFileReader {
 
+    private static final String PATH = "/data/";
     public static final Logger LOGGER = LogManager.getLogger(TextFileReader.class.getName());
 
     @Override
-    public String readFile(String file) throws NoSuchFieldException {
+    public String readFile(String file) throws NoValidDataException {
         String line = null;
         try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(this.getClass()
-                .getResourceAsStream("/data/" + file)))){
+                .getResourceAsStream(PATH + file)))){
 
             line = bufferedReader.readLine();
             ArrayAsStringValidator validator = new ArrayAsStringValidatorImpl();
@@ -32,7 +34,7 @@ public class TextFileReaderImpl implements TextFileReader {
             }
 
         } catch (IOException e) {
-            LOGGER.error("no such file", e);
+            LOGGER.error(e);
             e.printStackTrace();
         }
 
@@ -40,7 +42,7 @@ public class TextFileReaderImpl implements TextFileReader {
             return line;
         }
         else {
-            throw new NoSuchFieldException();
+            throw new NoValidDataException();
         }
     }
 }
