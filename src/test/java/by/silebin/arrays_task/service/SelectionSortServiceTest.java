@@ -22,14 +22,14 @@ public class SelectionSortServiceTest {
     public void testSort() throws EmptyArrayException {
         ArrayEntity initialArray = new ArrayEntity(ARRAY);
         ArrayEntity expectedArray = new ArrayEntity(SORTED_ARRAY);
-        Assert.assertEquals(service.sort(initialArray), expectedArray);
+        Assert.assertEquals(initialArray, expectedArray);
     }
 
     @Test
     public void testSort_SortedArray() throws EmptyArrayException {
         ArrayEntity initialArray = new ArrayEntity(SORTED_ARRAY);
         ArrayEntity expectedArray = new ArrayEntity(SORTED_ARRAY);
-        Assert.assertEquals(service.sort(initialArray), expectedArray);
+        Assert.assertEquals(initialArray, expectedArray);
     }
 
     @Test

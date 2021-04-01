@@ -6,12 +6,12 @@ import by.silebin.arrays_task.service.exception.EmptyArrayException;
 
 public class BubbleSortService implements SortService {
     @Override
-    public ArrayEntity sort(ArrayEntity array) throws EmptyArrayException {
+    public void sort(ArrayEntity array) throws EmptyArrayException {
         int[] unsortedArray = array.getArray();
         if(unsortedArray.length != 0) {
             int[] sortedArray = bubbleSort(unsortedArray);
             array.setArray(sortedArray);
-            return array;
+
         }
         else throw new EmptyArrayException();
     }

@@ -7,12 +7,11 @@ import by.silebin.arrays_task.service.exception.EmptyArrayException;
 public class QuickSortService implements SortService {
 
     @Override
-    public ArrayEntity sort(ArrayEntity array) throws EmptyArrayException {
+    public void sort(ArrayEntity array) throws EmptyArrayException {
         int[] unsortedArray = array.getArray();
         if(unsortedArray.length != 0) {
             int[] sortedArray = quickSort(unsortedArray, 0, unsortedArray.length - 1);
             array.setArray(sortedArray);
-            return array;
         }
         else throw new EmptyArrayException();
     }
