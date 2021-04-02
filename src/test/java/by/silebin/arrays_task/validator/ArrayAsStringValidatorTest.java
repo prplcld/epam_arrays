@@ -14,26 +14,26 @@ public class ArrayAsStringValidatorTest {
     private static final String VALID_DATA_WITH_SPACES = "1   333   -44567         -51    ";
 
     @BeforeTest
-    private void init(){
+    private void init() {
         validator = new ArrayAsStringValidatorImpl();
     }
 
     @Test
-    public void testIsValid_True_ValidData(){
+    public void testIsValid_True_ValidData() {
         String data = VALID_DATA;
         boolean result = validator.isValid(data);
         Assert.assertTrue(result);
     }
 
     @Test
-    public void testIsValid_False_InvalidData(){
+    public void testIsValid_False_InvalidData() {
         String data = INVALID_DATA;
         boolean result = validator.isValid(data);
         Assert.assertFalse(result);
     }
 
     @Test
-    public void testIsValid_True_ValidDataWithSpaces(){
+    public void testIsValid_True_ValidDataWithSpaces() {
         String data = VALID_DATA_WITH_SPACES;
         boolean result = validator.isValid(data);
         Assert.assertTrue(result);

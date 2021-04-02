@@ -3,26 +3,32 @@ package by.silebin.arrays_task.service.impl;
 import by.silebin.arrays_task.entity.ArrayEntity;
 import by.silebin.arrays_task.service.SortService;
 import by.silebin.arrays_task.service.exception.EmptyArrayException;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class QuickSortService implements SortService {
 
+    public static final Logger LOGGER = LogManager.getLogger(QuickSortService.class.getName());
+
     @Override
     public void sort(ArrayEntity array) throws EmptyArrayException {
-        int[] unsortedArray = array.getArray();
-        if(unsortedArray.length != 0) {
-            int[] sortedArray = quickSort(unsortedArray, 0, unsortedArray.length - 1);
-            array.setArray(sortedArray);
+        LOGGER.info("Sorting array using quick sort");
+        int[] arrayToSort = array.getArray();
+        if (arrayToSort.length != 0) {
+            quickSort(arrayToSort, 0, arrayToSort.length - 1);
+            array.setArray(arrayToSort);
+        } else {
+            LOGGER.warn("Empty array");
+            throw new EmptyArrayException();
         }
-        else throw new EmptyArrayException();
     }
 
-    private int[] quickSort(int[] arr, int low, int high) {
+    private void quickSort(int[] arr, int low, int high) {
         if (low < high) {
             int pi = partition(arr, low, high);
             quickSort(arr, low, pi - 1);
             quickSort(arr, pi + 1, high);
         }
-        return arr;
     }
 
     private void swap(int[] arr, int i, int j) {

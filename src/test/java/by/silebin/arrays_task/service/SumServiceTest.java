@@ -33,7 +33,7 @@ public class SumServiceTest {
     }
 
     @Test
-    public void testSum_ThrowsException_EmptyArray(){
+    public void testSum_ThrowsException_EmptyArray() {
         ArrayEntity array = new ArrayEntity(EMPTY_ARRAY);
         Assert.assertThrows(EmptyArrayException.class, () -> service.sum(array));
     }

@@ -15,7 +15,7 @@ public class AverageValueServiceTest {
     private static final int[] ARRAY_OF_MAX_INTEGER = new int[]{Integer.MAX_VALUE, Integer.MAX_VALUE};
 
     @BeforeTest
-    private void init(){
+    private void init() {
         service = new AverageValueServiceImpl();
     }
 

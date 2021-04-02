@@ -20,14 +20,14 @@ public class TextFileReaderImpl implements TextFileReader {
     public String readFile(String file) throws NoValidDataException {
         String line = null;
         try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(this.getClass()
-                .getResourceAsStream(PATH + file)))){
+                .getResourceAsStream(PATH + file)))) {
 
             line = bufferedReader.readLine();
             ArrayAsStringValidator validator = new ArrayAsStringValidatorImpl();
 
-            while(line != null){
+            while (line != null) {
                 LOGGER.info("Reading line from " + file);
-                if(validator.isValid(line)){
+                if (validator.isValid(line)) {
                     break;
                 }
                 line = bufferedReader.readLine();
@@ -38,10 +38,10 @@ public class TextFileReaderImpl implements TextFileReader {
             e.printStackTrace();
         }
 
-        if(line != null){
+        if (line != null) {
             return line;
-        }
-        else {
+        } else {
+            LOGGER.warn("No valid data found in a file");
             throw new NoValidDataException();
         }
     }

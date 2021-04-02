@@ -16,7 +16,7 @@ public class SearchServiceTest {
     private static final int[] RANDOM_ARRAY = new int[]{87, 40, -47, 63, -34};
 
     @BeforeTest
-    private void init(){
+    private void init() {
         service = new SearchServiceImpl();
     }
 
@@ -33,7 +33,7 @@ public class SearchServiceTest {
     }
 
     @Test
-    public void testSearchMaxValue_ThrowsException_EmptyArray()  {
+    public void testSearchMaxValue_ThrowsException_EmptyArray() {
         ArrayEntity array = new ArrayEntity(EMPTY_ARRAY);
         Assert.assertThrows(EmptyArrayException.class, () -> service.searchMaxValue(array));
     }
@@ -51,7 +51,7 @@ public class SearchServiceTest {
     }
 
     @Test
-    public void testSearchMinValue_ThrowsException_EmptyArray()  {
+    public void testSearchMinValue_ThrowsException_EmptyArray() {
         ArrayEntity array = new ArrayEntity(EMPTY_ARRAY);
         Assert.assertThrows(EmptyArrayException.class, () -> service.searchMinValue(array));
     }

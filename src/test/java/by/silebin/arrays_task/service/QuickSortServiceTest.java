@@ -14,7 +14,7 @@ public class QuickSortServiceTest {
     private SortService service;
 
     @BeforeTest
-    private void init(){
+    private void init() {
         service = new QuickSortService();
     }
 
@@ -22,6 +22,7 @@ public class QuickSortServiceTest {
     public void testSort() throws EmptyArrayException {
         ArrayEntity initialArray = new ArrayEntity(ARRAY);
         ArrayEntity expectedArray = new ArrayEntity(SORTED_ARRAY);
+        service.sort(initialArray);
         Assert.assertEquals(initialArray, expectedArray);
     }
 
@@ -29,11 +30,12 @@ public class QuickSortServiceTest {
     public void testSort_SortedArray() throws EmptyArrayException {
         ArrayEntity initialArray = new ArrayEntity(SORTED_ARRAY);
         ArrayEntity expectedArray = new ArrayEntity(SORTED_ARRAY);
+        service.sort(initialArray);
         Assert.assertEquals(initialArray, expectedArray);
     }
 
     @Test
-    public void testSort_ThrowsException_EmptyArray(){
+    public void testSort_ThrowsException_EmptyArray() {
         ArrayEntity array = new ArrayEntity(EMPTY_ARRAY);
         Assert.assertThrows(EmptyArrayException.class, () -> service.sort(array));
     }

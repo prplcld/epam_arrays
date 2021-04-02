@@ -1,7 +1,6 @@
 package by.silebin.arrays_task.entity;
 
 import java.util.Arrays;
-import java.util.stream.IntStream;
 
 public class ArrayEntity {
 
@@ -11,7 +10,7 @@ public class ArrayEntity {
 
     }
 
-    public ArrayEntity(int[] array){
+    public ArrayEntity(int[] array) {
         this.array = array;
     }
 
@@ -23,14 +22,14 @@ public class ArrayEntity {
         this.array = array;
     }
 
-    public int getAt(int index){
+    public int getAt(int index) {
         return array[index];
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        for(int a : array){
+        for (int a : array) {
             sb.append(a);
             sb.append(" ");
         }
@@ -47,6 +46,6 @@ public class ArrayEntity {
 
     @Override
     public int hashCode() {
-        return IntStream.of(array).sum();
+        return Arrays.hashCode(array);
     }
 }

@@ -6,8 +6,6 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import java.io.IOException;
-
 public class TextFileReaderTest {
 
     private static final String FILENAME = "data.txt";
@@ -17,7 +15,7 @@ public class TextFileReaderTest {
     private TextFileReader fileReader;
 
     @BeforeTest
-    private void init(){
+    private void init() {
         fileReader = new TextFileReaderImpl();
     }
 
@@ -27,12 +25,12 @@ public class TextFileReaderTest {
     }
 
     @Test
-    public void testReadFile_ThrowsException_EmptyFile(){
+    public void testReadFile_ThrowsException_EmptyFile() {
         Assert.assertThrows(NoValidDataException.class, () -> fileReader.readFile(EMPTY_FILE_FILENAME));
     }
 
     @Test
-    public void testReadFile_ThrowsException_NoFile(){
+    public void testReadFile_ThrowsException_NoFile() {
         Assert.assertThrows(NullPointerException.class, () -> fileReader.readFile(NOT_EXISTING_FILE));
     }
 }

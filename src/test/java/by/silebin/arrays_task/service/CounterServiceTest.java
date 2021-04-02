@@ -15,7 +15,7 @@ public class CounterServiceTest {
     private static final int[] EMPTY_ARRAY = new int[]{};
 
     @BeforeTest
-    private void init(){
+    private void init() {
         service = new CounterServiceImpl();
     }
 
@@ -32,7 +32,7 @@ public class CounterServiceTest {
     }
 
     @Test
-    public void testCountPositive_ThrowsException_EmptyArray(){
+    public void testCountPositive_ThrowsException_EmptyArray() {
         ArrayEntity array = new ArrayEntity(EMPTY_ARRAY);
         Assert.assertThrows(EmptyArrayException.class, () -> service.countPositive(array));
     }
@@ -50,7 +50,7 @@ public class CounterServiceTest {
     }
 
     @Test
-    public void testCountNegative_ThrowsException_EmptyArray(){
+    public void testCountNegative_ThrowsException_EmptyArray() {
         ArrayEntity array = new ArrayEntity(EMPTY_ARRAY);
         Assert.assertThrows(EmptyArrayException.class, () -> service.countNegative(array));
     }

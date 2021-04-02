@@ -12,12 +12,12 @@ public class StringToArrayEntityParserTest {
     private StringToArrayEntityParser parser;
 
     @BeforeTest
-    private void init(){
+    private void init() {
         parser = new StringToArrayEntityParserImpl();
     }
 
     @Test
-    public void testCreateFromString(){
+    public void testCreateFromString() {
         ArrayEntity expected = new ArrayEntity(ARRAY);
         Assert.assertEquals(parser.parse(STRING_ARRAY), expected);
     }

@@ -26,25 +26,28 @@ public class ReplaceServiceTest {
     public void testReplaceAllNegativeElementsWithZero() throws EmptyArrayException {
         ArrayEntity initialArray = new ArrayEntity(ARRAY);
         ArrayEntity expectedArray = new ArrayEntity(RESULT_ARRAY);
-        Assert.assertEquals(service.replaceAllNegativeElementsWithZero(initialArray), expectedArray);
+        service.replaceAllNegativeElementsWithZero(initialArray);
+        Assert.assertEquals(initialArray, expectedArray);
     }
 
     @Test
     public void testReplaceAllNegativeElementsWithZero_NoReplacements() throws EmptyArrayException {
         ArrayEntity initialArray = new ArrayEntity(ARRAY_WITH_NO_REPLACEMENTS);
         ArrayEntity expectedArray = new ArrayEntity(ARRAY_WITH_NO_REPLACEMENTS);
-        Assert.assertEquals(service.replaceAllNegativeElementsWithZero(initialArray), expectedArray);
+        service.replaceAllNegativeElementsWithZero(initialArray);
+        Assert.assertEquals(initialArray, expectedArray);
     }
 
     @Test
     public void testReplaceAllNegativeElementsWithZero_RandomArray() throws EmptyArrayException {
         ArrayEntity initialArray = new ArrayEntity(RANDOM_ARRAY);
         ArrayEntity expectedArray = new ArrayEntity(RANDOM_ARRAY_REPLACED);
-        Assert.assertEquals(service.replaceAllNegativeElementsWithZero(initialArray), expectedArray);
+        service.replaceAllNegativeElementsWithZero(initialArray);
+        Assert.assertEquals(initialArray, expectedArray);
     }
 
     @Test
-    public void testReplaceAllNegativeElementsWithZero_ThrowsException_EmptyArray(){
+    public void testReplaceAllNegativeElementsWithZero_ThrowsException_EmptyArray() {
         ArrayEntity array = new ArrayEntity(EMPTY_ARRAY);
         Assert.assertThrows(EmptyArrayException.class, () -> service.replaceAllNegativeElementsWithZero(array));
     }
